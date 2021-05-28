@@ -1,6 +1,5 @@
 package com.bl.insurance.service;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,7 +41,7 @@ public class UserService implements IUserService{
         	String generatedToken = token.createToken(user.getUserId(), user.getRoleId());
             login.setToken(generatedToken);
             login.setMessage("User Logged In Successfully");
-            login.setObj(user);
+//            login.setObj(user);
             return login;
         }
             throw new UserException("Invalid UserName Or Password");

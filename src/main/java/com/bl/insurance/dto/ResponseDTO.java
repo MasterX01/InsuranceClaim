@@ -8,4 +8,11 @@ public class ResponseDTO {
 		this.obj = obj;
 		this.message = message;
 	}
+	
+	public String getMessage() {
+		return message;
+	}
+	public Object getObj() {
+		return obj;
+	}
 }

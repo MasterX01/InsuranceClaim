@@ -4,14 +4,14 @@ public class LoginSuccess {
 	
 	public String message;
 	public String token;
-	public Object obj;
+//	public Object obj;
 	
 	public LoginSuccess() {}
 	
-	public LoginSuccess(String message, String token, Object obj) {
+	public LoginSuccess(String message, String token) { //, Object obj
 		this.message = message;
 		this.token = token;
-		this.obj = obj;
+//		this.obj = obj;
 	}
 	
 	public void setMessage(String message) {
@@ -28,11 +28,11 @@ public class LoginSuccess {
 		return token;
 	}
 	
-	public void setObj(Object obj) {
-		this.obj = obj;
-	}
-	public Object getObj() {
-		return obj;
-	}
+//	public void setObj(Object obj) {
+//		this.obj = obj;
+//	}
+//	public Object getObj() {
+//		return obj;
+//	}
 
 }

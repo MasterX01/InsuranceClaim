@@ -11,4 +11,11 @@ public class DecodedToken {
 		this.userId = userId;
 		this.role = role;
 	}
+	
+	public String getRole() {
+		return role;
+	}
+	public Long getUserId() {
+		return userId;
+	}
 }

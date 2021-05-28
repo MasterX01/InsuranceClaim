@@ -31,7 +31,6 @@ public class User {
 	
 	public User(SignupDTO signup) {
 		this.username = signup.username;
-		this.password = signup.password;
 		this.roleId = signup.roleId;
 	}
 	
@@ -46,5 +45,24 @@ public class User {
 	}
 	public Long getUserId() {
 		return userId;
+	}
+	public List<PolicyDetails> getPolicyDetails() {
+		return policyDetails;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public void setPolicyDetails(List<PolicyDetails> policyDetails) {
+		this.policyDetails = policyDetails;
+	}
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

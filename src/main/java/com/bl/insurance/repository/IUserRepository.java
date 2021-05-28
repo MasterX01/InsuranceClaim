@@ -9,7 +9,11 @@ import com.bl.insurance.model.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long>{
-	
+
 	User getByUsername(String username);
+
+	Optional<User> findByUsername(String userName);
+
+	Optional<User> findByUserId(Long id);
 
 }
