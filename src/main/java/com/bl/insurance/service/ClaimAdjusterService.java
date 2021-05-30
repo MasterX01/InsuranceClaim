@@ -33,7 +33,7 @@ public class ClaimAdjusterService implements IClaimAdjusterService{
             userData.setRoleId("ClaimAdjuster");
             return userRepo.save(userData);
         }else
-            throw new UserException("Only Claim Adjuster can register users");	
+            throw new UserException("Cannot be used as an Admin account already Exists");	
 	}
 
 	@Override

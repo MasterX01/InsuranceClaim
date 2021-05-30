@@ -27,8 +27,14 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 	
+	
+	/**
+	 * API for login
+	 * @param userDTO
+	 * @return token with userId and role encoded
+	 */
 	@PostMapping("/login")
-	public ResponseEntity<ResponseDTO> login(@Valid @RequestBody UserDTO userDTO){
+	public ResponseEntity login(@Valid @RequestBody UserDTO userDTO){
 		try{
 			LoginSuccess token = userService.login(userDTO);
 			return new ResponseEntity<ResponseDTO>(new ResponseDTO(token, " Login Successfull!!! "), HttpStatus.OK);

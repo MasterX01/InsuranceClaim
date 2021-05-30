@@ -14,6 +14,10 @@ import com.bl.insurance.model.ReportGeneration;
 import com.bl.insurance.model.User;
 import com.bl.insurance.service.ClaimHandlerService;
 
+/**
+ * Agent/Claim Handler Controller Claim Adjuster can also access the API's in this controller
+ * @author Akash Saxena
+ */
 @RestController
 @RequestMapping("/claimhandler")
 public class ClaimHandler {
@@ -21,6 +25,13 @@ public class ClaimHandler {
 	@Autowired
 	private ClaimHandlerService claimHandlerService;
 	
+	/**
+	 * API to generate report with policy and claim number
+	 * @param token
+	 * @param policyNumber
+	 * @param claimNumber
+	 * @return Generated Report
+	 */
 	@GetMapping("/ReportGeneration")
     public  ResponseEntity<ResponseDTO> GenerateReport(@RequestHeader("Authorization") String token,@RequestParam("policyNumber") Long policyNumber,@RequestParam("claimNumber") Long claimNumber) {
         try {
@@ -31,14 +42,5 @@ public class ClaimHandler {
 		}
     }
 
-    @GetMapping("/userdetails")
-    public ResponseEntity<ResponseDTO> getUserDetails(@RequestHeader("Authorization") String token,@RequestParam("policyNumber") Long policyNumber,@RequestParam("claimNumber") Long claimNumber){
-        try{
-        	User userData = claimHandlerService.userDetails(token,policyNumber,claimNumber);
-        	return new ResponseEntity<ResponseDTO>(new ResponseDTO(userData, "Operation Successfull"), HttpStatus.OK);
-        }catch (Exception e) {
-        	return new ResponseEntity<ResponseDTO>(new ResponseDTO(e.getMessage(), "Error"), HttpStatus.BAD_REQUEST);
-		}
-    }
 
 }

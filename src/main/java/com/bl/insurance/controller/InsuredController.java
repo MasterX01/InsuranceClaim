@@ -23,7 +23,11 @@ import com.bl.insurance.model.ClaimPolicy;
 import com.bl.insurance.model.PolicyDetails;
 import com.bl.insurance.service.IClaimService;
 
-
+/**
+ * Controller for insured user should also
+ * be used by claim Adjuster and Claim Handler
+ * @author Akash Saxena
+ */
 @RestController
 @RequestMapping("/insured")
 public class InsuredController {
@@ -31,9 +35,14 @@ public class InsuredController {
 	@Autowired
 	private IClaimService claimService;
 	
-	
+	/**
+	 * API to create policy
+	 * @param token
+	 * @param policyData
+	 * @return policy details
+	 */
 	@PostMapping("/createpolicy")
-    public ResponseEntity<ResponseDTO> CreatePolicy(@RequestHeader("Authorization") String token,@Valid @RequestBody PolicyDetailsDTO policyData) {
+    public ResponseEntity<ResponseDTO> createPolicy(@RequestHeader("Authorization") String token,@Valid @RequestBody PolicyDetailsDTO policyData) {
         try{
         	PolicyDetails policyDetails  = claimService.createPolicy(token, policyData);
         	return new ResponseEntity<ResponseDTO>(new ResponseDTO(policyDetails, "Operation Successfull"), HttpStatus.OK);
@@ -42,6 +51,11 @@ public class InsuredController {
 		}
     }
 
+	/**
+	 * API for users go get all their policies
+	 * @param token
+	 * @return
+	 */
     @GetMapping("/getpolicy")
     public ResponseEntity<ResponseDTO> getUserPolicies(@RequestHeader("Authorization") String token) {
     	try {
@@ -52,6 +66,13 @@ public class InsuredController {
 		}
     }
 
+    /**
+     * API for users to make claim to their policies
+     * @param token
+     * @param policyNumber
+     * @param claimPolicyDTO
+     * @return
+     */
     @PutMapping("/makeclaim")
     public ResponseEntity<ResponseDTO> claimPolicy(@RequestHeader("Authorization") String token,@RequestParam("policyNumber") Long policyNumber,@Valid @RequestBody ClaimPolicyDTO claimPolicyDTO) {
         try {
