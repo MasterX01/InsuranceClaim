@@ -43,7 +43,7 @@ public class ClaimHandlerService implements IClaimHandlerService{
 		}	        
 		Optional<PolicyDetails> policies = policyDetailsRepo.findByUserIdAndPolicyNo(decode.getUserId(), policyNumber);
 		Optional<ClaimPolicy> claims = claimPolicyRepo.findByClaimNumber(claimNumber);
-		if(policies.isPresent() & claims.isPresent()) {
+		if(policies.isPresent() && claims.isPresent()) {
 			ReportGeneration reportGeneration = new ReportGeneration();
 			reportGeneration.setClaimNo(claims.get().getClaimNumber());
 			reportGeneration.setClaimReason(claims.get().getClaimReason());

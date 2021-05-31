@@ -34,11 +34,9 @@ public class TokenGenerator {
         try {
             verification = JWT.require(Algorithm.HMAC256(SECRET_TOKEN));
         } catch (IllegalArgumentException e) {
-
-            e.printStackTrace();
+        	System.out.println(e);
         }
         JWTVerifier jwtverifier = verification.build();
-        // to decode token
         DecodedJWT decodedjwt = jwtverifier.verify(token);
         
         return new DecodedToken(decodedjwt.getClaim("userId").asLong(), decodedjwt.getClaim("roleId").asString());

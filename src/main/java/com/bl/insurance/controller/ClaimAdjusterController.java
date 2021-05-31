@@ -33,8 +33,8 @@ public class ClaimAdjusterController {
 	 * @param signup
 	 * @return user data
 	 */
-	@PostMapping("/firstclaimadjuster")
-    public ResponseEntity<ResponseDTO> firstClaimAdjuster(@Valid @RequestBody SignupDTO signup) {
+	@PostMapping("/firstadmin")
+    public ResponseEntity<ResponseDTO> firstAdmin(@Valid @RequestBody SignupDTO signup) {
         User userData = null;
         try {
         	userData = claimAdjuster.firstClaimAdjuster(signup);

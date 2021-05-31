@@ -45,8 +45,8 @@ public class ClaimService implements IClaimService{
 		Optional<User> userData = userRepo.findByUserId(decodedToken.getUserId());
 		userData.get().getPolicyDetails().add(policyData);
 		userRepo.save(userData.get());
-		PolicyDetails savePolicy = policyDetailsRepo.save(policyData);
-		return savePolicy;
+		PolicyDetails savedPolicy = policyDetailsRepo.save(policyData);
+		return savedPolicy;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class ClaimService implements IClaimService{
 		DecodedToken decodedToken = tokenGenerator.decodeToken(token);
 		Optional<PolicyDetails> policy = policyDetailsRepo.findByUserIdAndPolicyNo(decodedToken.getUserId(), policyNumber);
 		Optional<ClaimPolicy> claimByPolicy = claimPolicyRepo.findByPolicyNumber(policyNumber);
-		if (policy.isPresent() & !claimByPolicy.isPresent()) {
+		if (policy.isPresent() && !claimByPolicy.isPresent()) {
 			ClaimPolicy claimPolicy = new ClaimPolicy(claimPolicyDTO);
 			claimPolicy.setPolicyNumber(policyNumber);
 			policyDetailsRepo.save(policy.get());
